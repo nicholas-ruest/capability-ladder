@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "task_id": "release-42",
+  "grants": [
+    {
+      "id": "human-to-orchestrator",
+      "issuer": "human:nick",
+      "subject": "agent:orchestrator",
+      "issued_at": "2026-10-07T21:00:00Z",
+      "expires_at": "2026-10-07T23:00:00Z",
+      "constraints": {
+        "actions": ["read", "test", "commit"],
+        "resources": ["repo:acme/payments"],
+        "purposes": ["release"],
+        "data_classes": ["source"],
+        "recipients": [],
+        "transmissions": [],
+        "max_depth": 1
+      }
+    },
+    {
+      "id": "bad-delegation",
+      "issuer": "agent:someone-else",
+      "subject": "agent:worker",
+      "issued_at": "2026-10-07T21:05:00Z",
+      "expires_at": "2026-10-08T01:00:00Z",
+      "constraints": {
+        "actions": ["read", "delete"],
+        "resources": ["repo:acme/payments", "repo:acme/production"],
+        "purposes": ["release", "analytics"],
+        "data_classes": ["source", "secrets"],
+        "recipients": ["example.net"],
+        "transmissions": ["email"],
+        "max_depth": 1
+      }
+    }
+  ]
+}
